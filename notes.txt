@@ -1,0 +1,53 @@
+# keypointers
+- globalThis is avaialable for all browser and nodejs. it points to the same global object.
+- by default modules are protected to so that variables do not conflict with each other. 
+- commonjs modules run in synchronous way and in non strict mode.
+- esm module(mjs) run in asyn way and in  strict mode.
+- module is a collection of js code which private to itself.
+- nodejs supports caching, if we require 100 modules in another 100 files then only once node process that import 
+remaining 99 times it will pick that file from cache.
+how modules are protected -
+--every module is a IIFE which has 2 param module.exports and require.
+    --when we require any file first it is resolved based on the type.
+    --file content is loaded according to file type 
+    --Wraps inside an IIFE
+    --Evaluation
+    --Caching 
+
+
+
+LIbUV is superhero which is responsible to perform every I/O operations for nodejs.
+nodejs is asynchronous language.
+v8 is synchronous but nodejs uses libuv and v8 togther to make it asynchronous.
+synchronous function will block the main thread, dont use it.
+JS uses JIT for execution
+process of code execution - 
+--- parsing
+--- generation tokens
+--- AST is formed
+----JIT process ---> first code goes to interpreter(v8 ignition)--->byte code--->execution
+the code which will be used multiple times will be given to(optimization) compiler (turbofan) which optimizes it and give machine leve code.
+somethimes deoptimization also happens when example -- a function is doing sum for digits and suddenly we pass string for adding then 
+complier will give this code to interpreter again.this is called as deoptimization.
+---with this v8 is also doing garbage collection and name is orinoco,oilpan,scavanger,mcompact
+
+
+
+LIbUV
+-- libuv has eventloop inside which is responsible for putting callback in v8 call stack if it is empty.
+-- eventloop has 4 phases plus some extra phase for proess.nexttick() and promise (priority phase)
+-- phases are 1. timer (setTimout,setInterval)
+   2. poll(fs,https.get,data,incoming request,I/O callbacks)
+   3.check (setImmediate)
+   4.close(socket.on('close'))
+
+before running any phase eventloop will check that extra phase and run it before these 4 phases.
+
+when event loop does not have anything in any phase and call stack is also empty the event loop wait in poll phase that'y we call it as semi infinte loop
+
+
+
+is nodejs singlethreaded or multithreaded ?
+-- it depends on the program, if module has all the code as synchronous code then it is singlethreaded other wise it is multithreaded.
+-- by default libuv has 4 thread in thread pool.
+-- if we want to increase thread size or reduce it assign this variable process.env.UV_THREADPOOL_SIZE = 2

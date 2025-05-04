@@ -1,0 +1,7 @@
+tcp/ip - transmissison control protocol (route protocol)
+-- ii is a set of rule of trnasmission that is followed by a server and client while sending and receiving data.
+http - hypertext transfer protocol(data protocol/application layer protocol)
+-- it is a set of rule that is to be followed by server how the data should be sent like in which format.
+
+sockets - connect client make with server while sending and receiving data. after data is sent socket will be closed.
+web-sockets - these sockets are new and they open for longer time.it handles 2 way communication 

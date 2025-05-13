@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.16.0",
+    "mongoose": "^8.14.2",
+    "validator": "^13.15.0"
+  },
+  "name": "namaste-node",
+  "description": "read about how connections are managed inside nodejs. event emitters, stream and buffer epoll and kqueue fds-socket discrptior pipes",
+  "version": "1.0.0",
+  "main": "database.js",
+  "scripts": {
+    "dev": "nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/komalgarg8952/namaste-node.git"
+  },
+  "author": "komal garg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/komalgarg8952/namaste-node/issues"
+  },
+  "homepage": "https://github.com/komalgarg8952/namaste-node#readme"
+}

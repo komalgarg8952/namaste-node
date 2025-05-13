@@ -1,0 +1,4 @@
+always invest more time in planning the project.
+difference between put and patch is put always replace the whole data but patch is just changing a part of data.
+^ - for minor version
+~ - for patch upgrade

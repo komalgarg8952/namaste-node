@@ -1,0 +1,27 @@
+order of the routes matters alot
+we can use regex inside paths
+dynamic route - 'user/:id' this id can be anything and we can get it from req.params.
+similarly req.query is used to fetch query params from req.
+
+// app.use('/hello/:type',(req,res)=>{
+//     console.log(req.params)
+//     res.send("hello from nodejs34")
+// })
+
+// app.use('/hello',(req,res)=>{
+//     res.send("hello hello")
+// })
+
+// app.use('/hello/3',(req,res)=>{
+//     res.send('hello 3 world')
+// })
+
+error handling should be done in the end of route file.
+
+-- whenever json comes from req and we use req.body() it will give us undefined becuase it can not read json
+so we use middleware for this express.json() which will convert json to js object and nw we will store it in mongodb.
+
+
+-- schmea validation
+-- runValidators function is used for running validation function for patch call otherwise validate function in schmea will only run for post call.
+-pre is used like middleware to validate somehting in our api so schema.pre('save',function) will run before any save operaton happen.

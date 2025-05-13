@@ -51,3 +51,4 @@ is nodejs singlethreaded or multithreaded ?
 -- it depends on the program, if module has all the code as synchronous code then it is singlethreaded other wise it is multithreaded.
 -- by default libuv has 4 thread in thread pool.
 -- if we want to increase thread size or reduce it assign this variable process.env.UV_THREADPOOL_SIZE = 2
+

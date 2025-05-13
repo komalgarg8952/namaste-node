@@ -1,0 +1,2 @@
+jwt - json web token
+jwt has 3 part - . header, payload,signature

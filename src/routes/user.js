@@ -3,7 +3,7 @@ const userRouter = express.Router();
 const User = require('../models/user');
 const { userAuth } = require("../middleware/userAuth");
 const ConnectionRequest = require("../models/connection");
-const USER_SAFE_DATA = "firstName lastName gender age skills about"
+const USER_SAFE_DATA = "firstName lastName gender age skills about photoUrl"
 
 userRouter.get("/user/requests/received", userAuth, async (req, res) => {
   try {
@@ -68,7 +68,6 @@ userRouter.get('/feed',userAuth,async(req,res)=>{
             hideUserFromFeed.add(request.fromUserId);
             hideUserFromFeed.add(request.toUserId);
         });
-        // console.log(hideUserFromFeed)
         const usersToShowOnFeed = await User.find({
             $and:[{ _id:{$nin:Array.from(hideUserFromFeed)}},
                 {
@@ -76,6 +75,7 @@ userRouter.get('/feed',userAuth,async(req,res)=>{
             }]
            
         }).select(USER_SAFE_DATA).limit(limit).skip(skip);
+        console.log(usersToShowOnFeed)
 
         res.send(usersToShowOnFeed);
 

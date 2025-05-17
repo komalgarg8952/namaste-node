@@ -16,7 +16,7 @@ const validationFunction = (req)=>{
 }
 
 const validateUpdatedField = (req)=>{
-    const allowedFieldsForUpdation = ['firstName','lastName','about','skills','age','gender'];
+    const allowedFieldsForUpdation = ['firstName','lastName','about','skills','age','gender','photoUrl'];
     // console.log(req.body,user)
     const isupdateAllowed = Object.keys(req.body).every(key=>allowedFieldsForUpdation.includes(key));
     return isupdateAllowed;

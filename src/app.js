@@ -1,6 +1,7 @@
 const express = require("express");
 const connectDB = require("./config/database");
 const cookieParser = require("cookie-parser");
+require("dotenv").config();
 const cors = require('cors')
 const app = express();
 app.use(cors({
@@ -25,7 +26,7 @@ app.use('/',userRouter)
 connectDB()
   .then(() => {
     console.log("connection is established successfully");
-    app.listen(9090, () => {
+    app.listen(process.env.PORT, () => {
       console.log("server is listening to port 9090");
     });
   })

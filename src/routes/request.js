@@ -66,6 +66,7 @@ requestRouter.post('/request/review/:status/:requestId',userAuth,async(req,res)=
             toUserId: user._id,
             status:'interested'
         })
+        // console.log("==comes here",connectionRequest)
         if(!connectionRequest){
             return res.status(404).send('invalid request')
         }
@@ -77,6 +78,8 @@ requestRouter.post('/request/review/:status/:requestId',userAuth,async(req,res)=
         })
 
     }catch(err){
+       
+
         res.status(400).send('ERROR:'+ err);
     }
 })

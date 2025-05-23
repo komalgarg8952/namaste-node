@@ -17,7 +17,7 @@ profileRouter.patch('/profile/edit',userAuth,async(req,res,next)=>{
     try{
         const {user} = req;
        const updateAllowed = validateUpdatedField(req);
-       console.log(updateAllowed)
+      //  console.log(updateAllowed)
         if(!updateAllowed){
             throw new Error('update is not allowed');
         }

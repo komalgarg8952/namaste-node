@@ -1,0 +1,16 @@
+- create an account on razorpay, it will need some privacy ,aadhar and other data and it will take almost 4-5 dys in creation
+- first devtinder-web will send a create order api to node app.
+- node app will send request to razorpay with object which has all the payment related info and now node application also has secret key and password using which it will send request to razorpay
+- razorpay will send response back with orderID.
+- now backend will send this to web.
+- now FE will open razorpay modal but before that FE needs razorpay instance to open that instance.
+- in razorpay documentation there is a script which need to be attached in FE html.
+- now this script will give an object of razorpay which will be avaialable in window object.
+- to open a modal of razorpay use window.
+- now model is opened and payment will be performed on razorpay modal.
+- now there is web hook which razorpay use to inform about the status of payment to backend.
+- so we need to setup that webhook in razorpay dashboard then will create an api on node side for razorpay to give that status
+- while creating the webhook razorpay will ask fro a signature also that node application needs to validate in api.
+- that signature can be get in api header using x-razorpay-signature.
+- now we will attach a handler in FE code so that razorpay will call this handler once payment is successful.
+- and in this handler we will call backend api to know the status of payment/membership.

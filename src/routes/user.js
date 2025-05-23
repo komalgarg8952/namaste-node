@@ -75,7 +75,7 @@ userRouter.get('/feed',userAuth,async(req,res)=>{
             }]
            
         }).select(USER_SAFE_DATA).limit(limit).skip(skip);
-        console.log(usersToShowOnFeed)
+        // console.log(usersToShowOnFeed)
 
         res.send(usersToShowOnFeed);
 

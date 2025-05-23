@@ -20,10 +20,12 @@ authRouter.post("/signup", async (req, res, next) => {
     });
     const savedUser = await user.save();
     const token = await user.getJWT();
+    const isProduction = process.env.NODE_ENV === 'production';
+
     res.cookie("token", token, {
       expires: new Date(Date.now() + 8 * 3600000),
-      sameSite:'none',
-      secure:true
+      sameSite:isProduction? 'lax':'none',
+      secure:isProduction?false: true
     });
     res.send(savedUser);
   } catch (err) {

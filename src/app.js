@@ -10,11 +10,19 @@ const http = require("http");
 
 const server = http.createServer(app);
 initalizeSocket(server);
+let whitelist = ['http://localhost:5173', 'http://13.61.4.123']
 
-app.use(cors({
-  origin:'http://localhost:5173',
+let  corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
   credentials:true
-}))
+}
+app.use(cors(corsOptions))
 app.use(express.json());
 app.use(cookieParser());
 const authRouter = require('./routes/auth');

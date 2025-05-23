@@ -8,12 +8,20 @@ const getSecretRoomId = (userId, targetId) => {
     .update([userId, targetId].sort().join("$"))
     .digest("hex");
 };
+let whitelist = ['http://localhost:5173', 'http://13.61.4.123']
 
+let  corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
 const initalizeSocket = (server) => {
   const io = socket(server, {
-    cors: {
-      origin: "http://localhost:5173",
-    },
+    cors: corsOptions,
   });
 
   io.on("connection", (socket) => {
